@@ -1,11 +1,11 @@
 var config = {
-  apiKey: "AIzaSyB_m_T5HTRv8nJag2AiCxVKk-9ft_k0BzY",
-  authDomain: "project-2-a5345.firebaseapp.com",
-  databaseURL: "https://project-2-a5345.firebaseio.com",
-  projectId: "project-2-a5345",
-  storageBucket: "project-2-a5345.appspot.com",
-  messagingSenderId: "649772621947",
-  appId: "1:649772621947:web:36fce6153aa474885ec2de"
+  apiKey: "AIzaSyCk_hXhSVW7jWdJrQpTi1I1Nis9J-xv2Tc",
+  authDomain: "slr-tj.firebaseapp.com",
+  databaseURL: "https://slr-tj.firebaseio.com",
+  projectId: "slr-tj",
+  storageBucket: "slr-tj.appspot.com",
+  messagingSenderId: "389373118412",
+  appId: "1:389373118412:web:b50a4c6947157a35d6ff69"
 };
 
 var user;
@@ -89,26 +89,18 @@ $(document).on("click", ".accept", function() {
   });
 });
 
-function createNewPost(post, postId) {
-  $("#postcontainer").append(
-    "<div style= 'word-wrap: break-word; border:1px solid #ccc'>" +
-      post.subject +
-      "</div>"
-  );
-  $("#postcontainer").append(
-    "<div style= 'word-wrap: break-word; border:3px solid #ccc'>" +
-      post.task +
-      "</div>"
-  );
-  $("#postcontainer").append(
-    "<button class='accept' data-postId=" +
-      postId +
-      " data-userId=" +
-      user.id +
-      ">Accept</button>"
-  );
-  $("#postcontainer").append("<br>");
-  $("#postcontainer").append("<br>");
+// All Posts on one big Column
+function createNewPost(post) {
+  var newPostTask = document.createElement("DIV");
+  var postTask = document.createTextNode(post.task);
+  newPostTask.appendChild(postTask);
+  var postTasks = document.getElementById("postCol");
+  postTasks.insertBefore(newPostTask, postTasks.childNodes[0]);
+  var newPostSubject = document.createElement("DIV");
+  var postSubject = document.createTextNode(post.subject);
+  newPostSubject.appendChild(postSubject);
+  var postSubjects = document.getElementById("postCol");
+  postSubjects.insertBefore(newPostSubject, postSubjects.childNodes[0]);
 }
 
 function getAllNotAccPosts() {
